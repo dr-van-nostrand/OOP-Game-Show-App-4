@@ -9,6 +9,7 @@ class Phrase {
     constructor(phrase) {
         this.phrase = phrase.toLowerCase();
     }
+
     addPhraseToDisplay() {
 
         let nul = document.querySelector('#phrase ul');
@@ -19,19 +20,31 @@ class Phrase {
         let li = document.createElement('LI');
         li.innerHTML = letter;
         nul.appendChild(li);
+
         if(letter === ' ') {
             li.className = "space";
             } else {
             li.className = "hide letter";
             }
+
         });
     }  
 
     checkLetter(letter){
         // Store characters from random phrase inside array
-        let gameLetters = this.phrase.split();
+        let gameLetters = this.phrase.split('');
+        console.log(gameLetters);
         // Return true or false if letter parameter matches character in 'charArray'
+        let gameLetters2 = this.phrase.split();
+        console.log(gameLetters2);
         return gameLetters.includes(letter);
+    }
+    checkLetterAta(letter){
+        // Store characters from random phrase inside array
+        if (this.phrase.search(letter) != -1 ){
+            return true;
+        }
+        return false;
     }
 
     showMatchedLetter(letter){

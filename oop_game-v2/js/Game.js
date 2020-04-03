@@ -25,9 +25,12 @@ class Game {
     getRandomPhrase() {
         return this.phrases[Math.floor(Math.random() * this.phrases.length)];
 	};
+
 	startGame() {
 		document.getElementById('overlay').style.display = 'none';
 		const rPh = game.getRandomPhrase(); 
+		console.log(rPh);
+
 		const ph = new Phrase(rPh.phrase); 
 		ph.addPhraseToDisplay();
 		this.activePhrase = ph;
@@ -88,16 +91,10 @@ class Game {
             title.classList.remove('slide-in'); //removes slide animation
         };
 
-        // Add click event listener to reset button
-        resetButton.addEventListener('click', (event) => {
-            // Call reset game FUNCTION
-            resetGame();
-            game = new Game();
-            game.startGame();
-        });
+
 	};
 
-	
+
 	handleInteraction(button){
 		button.disabled = true;
     
