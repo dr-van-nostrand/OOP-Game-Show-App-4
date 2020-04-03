@@ -33,8 +33,7 @@ class Game {
 		this.activePhrase = ph;
 	};
 
-	handleInteraction(){
-	};
+
 
 	checkForWin(){
 		// Select phrase's hidden li elements and store in variable
@@ -96,6 +95,26 @@ class Game {
             game = new Game();
             game.startGame();
         });
-    };
+	};
+
+	
+	handleInteraction(button){
+		button.disabled = true;
+    
+
+        if( this.activePhrase.checkLetter(button.textContent) === false ){
+            button.className = 'wrong';
+            this.removeLife();
+        } else {
+            button.className = 'chosen';
+            this.activePhrase.showMatchedLetter( button.textContent );
+            this.checkForWin();
+        }
+
+        if( this.checkForWin() === true ){
+            this.gameOver(true);
+        }
+
+	};
 }
 
