@@ -22,6 +22,7 @@ class Game {
 		}, ];
 		this.activePhrase = null;
     }
+    // Show Random Phrase
     getRandomPhrase() {
         return this.phrases[Math.floor(Math.random() * this.phrases.length)];
 	};
@@ -29,18 +30,14 @@ class Game {
 	startGame() {
 		document.getElementById('overlay').style.display = 'none';
 		const rPh = game.getRandomPhrase(); 
-		console.log(rPh);
 
 		const ph = new Phrase(rPh.phrase); 
 		ph.addPhraseToDisplay();
 		this.activePhrase = ph;
-	};
-
-
-
-	checkForWin(){
+    };
+    checkForWin(){
 		// Select phrase's hidden li elements and store in variable
-		let liHide = document.querySelectorAll('li[class~="hide"]');
+        let liHide = document.querySelectorAll('li[class~="hide"]');
 		// Check condition: if there are NO hidden li elements, return true, else false
 		if (liHide.length === 0) {
 			return true;
@@ -48,6 +45,8 @@ class Game {
 				return false;
 			};
 		};
+
+    
 
 	removeLife(){
 		let heart = document.querySelectorAll('img');
@@ -72,6 +71,9 @@ class Game {
 
         // Select 'div#overlay"
         const divOverlay = document.querySelector('div#overlay');
+        const letters = document.querySelectorAll('ul li');
+        const buttons = document.querySelectorAll('button');
+        const lostLifes = document.querySelectorAll('img[src="images/lostHeart.png"]');
 
         // Condition check, if 'gameWon' parameter = true, 
         if (gameWon === true) {
@@ -91,12 +93,24 @@ class Game {
             title.classList.remove('slide-in'); //removes slide animation
         };
 
+        letters.forEach( letter => {
+            letter.remove();
+        });
 
+        buttons.forEach( button => {
+            button.disabled = false;
+            button.className = 'key';
+        });
+        
+        lostLifes.forEach( life => {
+            life.src="images/liveHeart.png";
+        });
 	};
 
 
-	handleInteraction(button){
-		button.disabled = true;
+    handleInteraction(button){
+
+        button.disabled = true;
     
 
         if( this.activePhrase.checkLetter(button.textContent) === false ){
@@ -112,6 +126,6 @@ class Game {
             this.gameOver(true);
         }
 
-	};
+    }
 }
 

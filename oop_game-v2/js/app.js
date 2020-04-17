@@ -41,7 +41,9 @@
 const game = new Game();
 const resetButton = document.getElementById('btn__reset');
 
-resetButton.addEventListener('click', (e) => {
+resetButton.addEventListener('click', () => {
+
+    
 	game.startGame();
     })
     
@@ -50,7 +52,6 @@ keys.forEach( key => {
 
     key.addEventListener('click', (e) => {
          game.handleInteraction(e.target)
-            console.log(e.target)
             
     })
 

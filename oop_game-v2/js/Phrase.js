@@ -33,12 +33,11 @@ class Phrase {
     checkLetter(letter){
         // Store characters from random phrase inside array
         let gameLetters = this.phrase.split('');
-        console.log(gameLetters);
         // Return true or false if letter parameter matches character in 'charArray'
-        let gameLetters2 = this.phrase.split();
-        console.log(gameLetters2);
         return gameLetters.includes(letter);
     }
+
+    
     checkLetterAta(letter){
         // Store characters from random phrase inside array
         if (this.phrase.search(letter) != -1 ){
