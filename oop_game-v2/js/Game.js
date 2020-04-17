@@ -35,9 +35,7 @@ class Game {
 		this.activePhrase = ph;
     };
     checkForWin(){
-		// Select phrase's hidden li elements and store in variable
         let liHide = document.querySelectorAll('li[class~="hide"]');
-		// Check condition: if there are NO hidden li elements, return true, else false
 		if (liHide.length === 0) {
 			return true;
 			} else {
