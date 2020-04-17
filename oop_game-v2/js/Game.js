@@ -17,9 +17,8 @@ class Game {
 			phrase: "you have to see the matrix for yourself"
 		}, {
 			phrase: "you talking to me"
-		},{
-			phrase: "hitler was a sensitive man"
-		}, ];
+        },
+     ];
 		this.activePhrase = null;
     }
     // Show Random Phrase
@@ -48,18 +47,18 @@ class Game {
 
     
 
-	removeLife(){
-		let heart = document.querySelectorAll('img');
-        if (heart[this.missed].src = 'images/liveHeart.png') {
-            heart[this.missed].src = 'images/lostHeart.png';
-            
-            // Increase value of 'missed' property by 1
+        removeLife(){
+
             this.missed += 1;
-        };
-        if (this.missed === 5) {
-            game.gameOver(false);
-        };
-    };
+            const scoreboard = document.querySelector('#scoreboard ol');
+            const life = document.querySelector('img[src="images/liveHeart.png"]');
+            life.src="images/lostHeart.png";
+            
+            if( this.missed === 5 ){
+                this.gameOver(false);
+            }
+    
+        }
 
 
 	gameOver(gameWon) {
