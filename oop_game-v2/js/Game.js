@@ -34,6 +34,7 @@ class Game {
 		ph.addPhraseToDisplay();
 		this.activePhrase = ph;
     };
+
     checkForWin(){
         let liHide = document.querySelectorAll('li[class~="hide"]');
 		if (liHide.length === 0) {
@@ -43,12 +44,12 @@ class Game {
 			};
 		};
 
-    
+ 
+
 
         removeLife(){
 
             this.missed += 1;
-            const scoreboard = document.querySelector('#scoreboard ol');
             const life = document.querySelector('img[src="images/liveHeart.png"]');
             life.src="images/lostHeart.png";
             
@@ -81,7 +82,11 @@ class Game {
             divOverlay.setAttribute('class', 'win');
             title.classList.remove('slide-in'); //removes slide animation 
 
-        } else {
+        } 
+        
+          
+        
+        if (this.missed === 5) {
             gameOver.innerHTML = 'Sorry, better luck next time!';
             gameOver.style.display = 'block';
             gameOver.style.justifyContent = 'center';
@@ -108,12 +113,14 @@ class Game {
     handleInteraction(button){
 
         button.disabled = true;
-    
+  
 
         if( this.activePhrase.checkLetter(button.textContent) === false ){
             button.className = 'wrong';
             this.removeLife();
         } else {
+
+
             button.className = 'chosen';
             this.activePhrase.showMatchedLetter( button.textContent );
             this.checkForWin();
@@ -124,5 +131,7 @@ class Game {
         }
 
     }
+
+
 }
 

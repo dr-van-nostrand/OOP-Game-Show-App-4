@@ -38,24 +38,39 @@
 // game.startGame();
 // console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
 
-const game = new Game();
+let game;
 const resetButton = document.getElementById('btn__reset');
 
 resetButton.addEventListener('click', () => {
-
-    
-	game.startGame();
+    game = new Game();
+    game.startGame();
     })
     
 const keys = document.querySelectorAll(".key");
+
 keys.forEach( key => {
-
     key.addEventListener('click', (e) => {
-         game.handleInteraction(e.target)
-            
+         game.handleInteraction(e.target)      
     })
-
 })
 
+let keyboard = (event) => {
+    game.handleInteraction(event);    
 
+};
 
+document.addEventListener("keydown",(event) => {
+
+    let selected = event.key;
+    let allKeys = document.getElementsByClassName('key');
+    let selectKeyElement;
+    for(let i = 0; i < allKeys.length; i += 1){
+
+        if(allKeys[i].innerHTML === selected) {
+            selectKeyElement = allKeys[i]; 
+        };
+    };
+    
+    keyboard(selectKeyElement);
+
+});

@@ -37,14 +37,6 @@ class Phrase {
         return gameLetters.includes(letter);
     }
 
-    
-    checkLetterAta(letter){
-        // Store characters from random phrase inside array
-        if (this.phrase.search(letter) != -1 ){
-            return true;
-        }
-        return false;
-    }
 
     showMatchedLetter(letter){
         // Select ALL letter 'li' elements and store in variable 
