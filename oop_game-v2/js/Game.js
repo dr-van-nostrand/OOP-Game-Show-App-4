@@ -76,9 +76,9 @@ class Game {
         // Condition check, if 'gameWon' parameter = true, 
         if (gameWon === true) {
             gameOver.innerHTML = 'You win! Well done!';
-            gameOver.style.display = 'block';
+            // gameOver.style.display = 'block';
             gameOver.style.justifyContent = 'center';
-            divOverlay.style.display = 'block';
+            divOverlay.style.display = 'inherit';
             divOverlay.setAttribute('class', 'win');
             title.classList.remove('slide-in'); //removes slide animation 
 
@@ -88,9 +88,9 @@ class Game {
         
         if (this.missed === 5) {
             gameOver.innerHTML = 'Sorry, better luck next time!';
-            gameOver.style.display = 'block';
+            // gameOver.style.display = 'block';
             gameOver.style.justifyContent = 'center';
-            divOverlay.style.display = 'block';
+            // divOverlay.style.display = 'block';
             divOverlay.setAttribute('class', 'lose');
             title.classList.remove('slide-in'); //removes slide animation
         };

@@ -59,18 +59,14 @@ let keyboard = (event) => {
 
 };
 
-document.addEventListener("keydown",(event) => {
-
-    let selected = event.key;
-    let allKeys = document.getElementsByClassName('key');
-    let selectKeyElement;
-    for(let i = 0; i < allKeys.length; i += 1){
-
-        if(allKeys[i].innerHTML === selected) {
-            selectKeyElement = allKeys[i]; 
-        };
-    };
-    
-    keyboard(selectKeyElement);
-
+document.addEventListener('keyup', (e) => {
+    if(e.keyCode > 64 && e.keyCode < 91){
+        let button;
+        for(let i = 0; i < keys.length; i++){
+            if(e.key === keys[i].textContent){
+                button = keys[i];
+            }
+        }
+        game.handleInteraction(button);
+    }
 });
